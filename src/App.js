@@ -33,7 +33,7 @@ class Todolist extends Component {
   getTodo() {
     return this.state.list.map((item, index) => {
       return (
-          <Todo key={index} content={item} index={index} deleteItem={this.deleteItem}
+          <Todo key={index} content={item} index={index} item={item} deleteItem={this.deleteItem}
           />
       )
     })

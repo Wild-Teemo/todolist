@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import propTypes from 'prop-types'
 class Todo extends Component{
     constructor(props){
         super(props)
@@ -6,11 +7,10 @@ class Todo extends Component{
         
     }
     render(){
-        const {content,index} = this.props
+        const {content,item} = this.props
         return (
         <div>
-          <label htmlFor={index}>{content}</label>
-          <input type="checkbox" onChange={this.deleteItem} checked=""/>        
+            <li>{content} <div className='check' onClick={this.deleteItem}>OK</div></li>
         </div> 
         )
     }
@@ -18,5 +18,14 @@ class Todo extends Component{
         const {deleteItem,index} = this.props
         deleteItem(index)
     }
+}
+
+Todo.propTypes={
+    content:propTypes.string,
+    deleteItem:propTypes.func,
+    index:propTypes.number
+}
+Todo.defaultProps={
+    content:'hello'
 }
 export default Todo
