@@ -1,0 +1,12 @@
+.input{
+    border:1px solid #ccc
+}
+button{
+    background: #1e90ff;
+    color:#fff;
+    height: 20px;
+}
+ul{
+    margin-left: 12px;
+    width: 100px;
+}
