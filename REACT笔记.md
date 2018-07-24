@@ -62,7 +62,7 @@ setState可以传入参数
       inputValue:''
     }))
   ```
-  index做key值的问题
+  _*index做key值的问题*_
   
   ES6语法
   const {content,index} = this.props
@@ -85,8 +85,8 @@ setState可以传入参数
     content:propTypes.string.isrequired
   //isrequired表示必须传 
     deleteItem:propTypes.func,
-  // deleteItem:PropTypes.arrayOf(PropTypes.number,PropTypes.func)
-  //可以是多个类型 用arrayof
+  // content:propTypes.oneOfType([propTypes.number,propTypes.string])
+  //多个类型
     index:propTypes.number
 }
   ```
@@ -126,8 +126,190 @@ jsx-js对象是用了react.createElement
   key值比对也可以提高性能
   尽量不要用index作为key值，删除一项后会改变key值。可以用item
   
+### ref获取dom react不提倡操作dom 尽量不要使用
+ ref={(input)=>{this.input = input}}
+  input指向真实的dom节点
+  input.value可以获得这个dom节点的value值
+  
+有时ref和setstate一起使用会出现问题，setstate异步 获取到的是更新前的dom
+  
+```javascript
+     this.setState((prevState) => {
+      const list = prevState.list
+      list.splice(index, 1)
+      
+      return {
+        list: list
+      }
+    })
+    console.log(this.state.list) //获取到的是splice前的list
+  }
+  ```
+  修改 setstate的第二个参数 回调函数，在setstate异步执行后才会执行 可以用于获取更新后的dom元素信息
+```javascript
+      this.setState((prevState) => {
+      const list = prevState.list
+      list.splice(index, 1)
 
+      return {
+        list: list
+      }
+    }, () => {
+      console.log(this.state.list)
+    }
+    )
+  }
+}
+  ```
+  
+## 生命周期函数
+在某一时刻组件会自动调用执行的函数
+render 第一次挂载组件和数据发现变化时 组件会自动调用渲染
+constructor是es6的函数 不算在react生命周期函数中
+* 初始化 state props
+* mounting挂载 
+  * componentwillmount 组件即将被挂载到页面时 挂载到页面之前
+  * render
+  * componentdidmount 组件被挂载到页面之后
+  数据被修改只会执行render 挂载执行只会执行第一次
+* updation组件更新 state props发生变化
+  * componentwillreceiveprops 顶层组件没有父组件，没有接收到的props不会执行这个函数。当一个组件从父组件接收到参数，父组件的render函数重新被执行，子组件的这个函数才会执行。（这个组件第一次存在于父组件，不会执行，之前已经存在于父组件中才会被执行）
+  * shouldcomponentupdate 更新之前 返回一个布尔值return true 决定是否被更新 返回true才会执行下面的函数
+  * componentwillupdate 组件更新之前
+  * render
+  * componentdidupdate 更新完成之后
+* unmounting
+  * componentwillunmount 组件从页面中去除之前
+## 生命周期函数的作用
+继承自component component有除了render的所有生命周期函数 render必须写
+* 利用shouldcomponentupdate避免子组件不改变也要随父组件重新渲染
+```javascript
+shouldcomponentupdate(nextProps,nextState){
+  if(nextprops.content !== this.props.content){
+  return true
+  }else{
+  return false
+  }
+  }
+```
+  只有子组件改变 才会执行子组件的render
+  
+* react中的异步ajax放在componentdidmount中。如果放在render中，render会多次执行，会发送多次ajax请求。_*放在componentwillmount中 constructor中?*_
 
-## 问题
+## react中的性能优化
+* 事件绑定this全放到constructor中 使绑定操作只用执行一次 避免子组件无谓渲染 _*为什么会优化*_
+* setstate异步，合并成一次
+* 虚拟dom 同层比对key值对比
+* 子组件shouldcomponentupdate
+
+  
+## react中的ajax模块 - axios
+成功回调.then 失败.catch
+import axios from 'axios'
+```javascript
+  componentDidMount(){
+  axios.get('./todo.js').then(()=>{
+    console.log('success')
+
+  }).catch(()=>{
+    console.log('false')
+  })
+}
+  ```
+  
+## react中的动画
+###css动画
+animation 最后一个参数 forwards保存最后一帧效果
+```javascript
+  .show{
+    opacity: 1;
+    animation: hide-show 2s ease-in forwards
+}
+.hide{
+    opacity: 0;
+    animation: hide-show 2s ease-in forwards
+}
+
+@keyframes hide-show{
+    0% {
+        color:red;
+        opacity: 1;
+    }
+    50%{
+        color:blue;
+        opacity: 0.5;
+    }
+    100%{
+        color:green;
+        opacity: 1
+    }
+}
+import React,{Component,Fragment} from 'react';
+import './animation.css'
+class Animation extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            show:true
+        }
+        this.toggle = this.toggle.bind(this)
+    }
+    render(){
+        return(
+            <Fragment>
+            <div className={this.state.show?'show':'hide'}>show</div>
+            <div onClick={this.toggle}>toggle</div>
+            </Fragment>
+        )
+    }
+    toggle(){
+        this.setState(()=>({
+            show:this.state.show?false:true
+        }))
+    }
+}
+
+export default Animation
+  ```
+### react-transition-group
+  
+# redux
+redux把数据放在公共区域store
+reducer+flux
+## 工作流程
+react component
+action creators
+store
+reducer
+组件向store获取数据前，通过action creators创建需要获取数据这句话告诉store，store向reducer查询，reducer告诉store查询数据。
+  
+
+const newState = JSON.parse(JSON.stringify(state))
+对state做一次深拷贝
+因为reducer可以接收state 但不可以修改state 只能修改拷贝的
+  
+actionType.js 用来检查action type 防止拼写错误检查不出来
+```javascript
+  import { CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './store/actionType'
+  export const CHANGE_INPUT_VALUE = 'change_input_value'
+export const ADD_TODO_ITEM = 'add_todo_item'
+export const DEL_TODO_ITEM = 'del_todo_item'
+  ```
+actioncreator统一管理action
+  
+* store必须唯一
+* 别的只能改变store的副本 只有store能改变自己的内容 reducer中store取得更新完的副本再对自己更新
+* reducer必须是纯函数 （给定固定输入，就会有固定输出。并且不会有副作用）如用了new date（）输出，就不是纯函数 直接修改了state会产生副作用，也不叫纯函数
+createstore
+store.dispatch
+store.getstate
+store.subscribe
+
+  ## 问题
   jsx自动补全标签emmet.triggerExpansionOnTab
+  
+  list: [...res.data]
+  而不使用 list:res.data
+  先把res.data拆分再构建新的数组传给list
+  避免res数据被修改后 不可预知的数据改变的情况
   

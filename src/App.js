@@ -4,24 +4,23 @@ import { Input,Button,List} from 'antd';
 import Todo from './todo'
 //import axios from 'axios'
 import './style.css'
-//const component = react.component
+import store from './store/'
+import { CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DEL_TODO_ITEM} from './store/actionType'
 
 
 class Todolist extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      inputValue: '',
-      list: []
-    }
+    this.state = store.getState()
     this.onClickHandle = this.onClickHandle.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    store.subscribe(this.handleChange)
     this.onChangeHandle = this.onChangeHandle.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
   }
   render() {
     return (
       <Fragment>
-
         <div> 
           <label htmlFor="insert">todo：</label>
           <Input id="insert" className="input" type="text" value={this.state.inputValue}
@@ -34,56 +33,31 @@ class Todolist extends Component {
         </List>
 
       </Fragment>
-
     );
   }
-  // getTodo() {
-  //   return this.state.list.map((item, index) => {
-  //     return (
-        
-  //       />
-  //     )
-  //   })
-  // }
-  onChangeHandle(e) {
-    const value = e.target.value
-    this.setState(() => ({
-      inputValue: value
-    }))
 
+  onChangeHandle(e) {
+    const action = {
+      type:CHANGE_INPUT_VALUE,
+      value:e.target.value
+    }
+    store.dispatch(action)
+  }
+  handleChange(){
+    this.setState(store.getState())
   }
   onClickHandle() {
-    // const list = this.state.list
-    // list.push(this.state.inputValue)
-    //list : [...this.state.list,this.state.value]
-
-    this.setState((prevState) => {
-      if (prevState.inputValue === '') {
-        alert('请输入')
-        return {
-          list: prevState.list,
-          inputValue: ''
-        }
-      }
-      else {
-        return {
-          list: [...prevState.list, prevState.inputValue],
-          inputValue: ''
-        }
-      }
-    })
+    const action = {
+      type:ADD_TODO_ITEM
+    }
+    store.dispatch(action)
   }
   deleteItem(index) {
-
-    //不可以直接修改state中的数据 拷贝一个副本修改
-    this.setState((prevState) => {
-      const list = prevState.list
-      list.splice(index, 1)
-
-      return {
-        list: list
-      }
-    })
+    const action = {
+      type: DEL_TODO_ITEM,
+      index:index
+    }
+    store.dispatch(action)
   }
   // componentDidMount() {
   //   axios.get('./todo').then((res) => {
