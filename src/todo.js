@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component,Fragment} from 'react';
 import propTypes from 'prop-types'
 class Todo extends Component{
     constructor(props){
@@ -7,25 +7,30 @@ class Todo extends Component{
         
     }
     render(){
-        const {content,item} = this.props
+        const {content} = this.props
         return (
-        <div>
-            <li>{content} <div className='check' onClick={this.deleteItem}>OK</div></li>
-        </div> 
+        <Fragment>
+            <li>{content}<span className='check' onClick={this.deleteItem}>OK</span></li>
+        </Fragment> 
         )
     }
     deleteItem(){
         const {deleteItem,index} = this.props
         deleteItem(index)
     }
+    shouldComponentUpdate(nextprops,nextstate){
+        if(nextprops.content !== this.props.content){
+            return true
+        }else{
+            return false
+        }
+    }
 }
 
+
 Todo.propTypes={
-    content:propTypes.string,
-    deleteItem:propTypes.func,
-    index:propTypes.number
-}
-Todo.defaultProps={
-    content:'hello'
+    index:propTypes.number,
+    deleteItem: propTypes.func,
+    content:propTypes.oneOfType([propTypes.number,propTypes.string])
 }
 export default Todo
