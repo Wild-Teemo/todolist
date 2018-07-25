@@ -18,7 +18,7 @@ class Todo extends Component{
         const {deleteItem,index} = this.props
         deleteItem(index)
     }
-    shouldComponentUpdate(nextprops,nextstate){
+    shouldComponentUpdate(nextprops){
         if(nextprops.content !== this.props.content){
             return true
         }else{
