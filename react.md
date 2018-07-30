@@ -390,9 +390,25 @@ saga.js中 使用 *_generator函数 ？_*
   import connect from 'react-redux'
   export default connect(null,null)(TodoList) //让TodoList和store做连接 首先TodoList要在provider里
   ```
+## dva
+babel-plugin-import 是用来按需加载 antd 的脚本和样式的
+
+put 用于触发 action 。
+`yield put({ type: 'todos/add', payload: 'Learn Dva' });`
+call 用于调用异步逻辑，支持 promise 。
+` const result = yield call(fetch, '/todos'); `
+select 用于从 state 里获取数据。
+` const todos = yield select(state => state.todos);`
+
   ## 问题
   jsx自动补全标签emmet.triggerExpansionOnTab
   
+http://ochukai.me/dva-in-action/
+https://github.com/dvajs/dva-knowledgemap#effects
+https://github.com/dvajs/dva/tree/master/examples/user-dashboard
+https://dvajs.com/guide/introduce-class.html#dispatch-%E6%96%B9%E6%B3%95
+
+
   list: [...res.data]
   而不使用 list:res.data
   先把res.data拆分再构建新的数组传给list
