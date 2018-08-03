@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "scripts": {
+        "start": "umi dev",
+        "build": "umi build",
+        "format": "prettier --write \"{,!(node_modules|.git|docs|dist)/**/}*.{js,json,css,md}\"",
+        "lint": "eslint src/ server/ --fix",
+        "precommit": "npm run format  &&  npm run lint  &&  git add .",
+        "help": "esdoc  &&  opn docs/index.html -o"
+    },
+    "dependencies": {
+        "bootstrap": "^4.1.1",
+        "dateformat": "^3.0.3",
+        "dva": "^2.2.3",
+        "history": "^4.7.2",
+        "mockjs": "^1.0.1-beta3",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "react-intl": "^2.4.0",
+        "reactstrap": "^6.0.1",
+        "umi": "^1.0.0",
+        "umi-plugin-dva": "^0.7.1"
+    },
+    "devDependencies": {
+        "esdoc": "^1.1.0",
+        "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+        "esdoc-external-webapi-plugin": "^1.0.0",
+        "esdoc-jsx-plugin": "^1.0.0",
+        "esdoc-standard-plugin": "^1.0.0",
+        "eslint": "^4.14.0",
+        "eslint-config-umi": "^0.1.1",
+        "eslint-plugin-flowtype": "^2.34.1",
+        "eslint-plugin-import": "^2.6.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.1.0",
+        "husky": "^0.14.3",
+        "opn-cli": "^3.1.0",
+        "prettier": "^1.13.7"
+    }
+}

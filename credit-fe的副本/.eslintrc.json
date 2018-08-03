@@ -1,0 +1,32 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module"
+    },
+    "extends": ["eslint:recommended", "react-app"],
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "no-cond-assign": "off",
+        "no-console": [
+            "warn",
+            {
+                "allow": ["info", "warn", "error", "time", "timeEnd"]
+            }
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireReturn": false
+            }
+        ],
+        "react/react-in-jsx-scope": "warn"
+    }
+}

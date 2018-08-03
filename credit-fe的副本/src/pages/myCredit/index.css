@@ -1,0 +1,39 @@
+.task_tab_pane {
+    margin: 0 18px;
+}
+
+:global(.ant-tabs-bar) {
+    background-color: #fff;
+    margin: 0 0 32px 0;
+}
+:global(.ant-tabs-nav-animated) {
+    margin-left: 48px;
+}
+:global(.ant-tabs-content) {
+    margin: 0 32px;
+}
+:global(.ant-tabs.ant-tabs-card .ant-tabs-bar .ant-tabs-tab) {
+    margin-right: auto;
+    background: #fff;
+    border: 1px solid #e8e8e800;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+:global(.ant-tabs.ant-tabs-card .ant-tabs-bar .ant-tabs-tab-active) {
+    background-color: #f0f0f0;
+    color: #f18d55;
+    border: 1px solid #e8e8e8;
+}
+
+.gutterBox {
+    background: #725b1f38;
+    padding: 5px 0;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.navBar {
+    padding-left: 48px;
+}

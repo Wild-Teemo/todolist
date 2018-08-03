@@ -1,0 +1,17 @@
+.btnSearch {
+    display: inline-block;
+    position: absolute;
+    right: 2px;
+    top: 6px;
+    z-index: 999;
+    background: #ececec;
+    color: #f1a255;
+    height: 34px;
+    width: 34px;
+    border: none;
+    margin: 1px;
+    font-weight: 800;
+    background: url(../../assets/images/searchIcon.png) no-repeat center center,
+        url(../../assets/images/searchBtn.png) no-repeat center center;
+    background-size: 16px 15px, cover;
+}

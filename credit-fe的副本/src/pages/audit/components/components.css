@@ -1,0 +1,87 @@
+.visitCard {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 100vh !important;
+    width: 480px;
+    z-index: 1010;
+}
+
+.sendBtn {
+    width: 320px;
+}
+.searchIcon {
+    color: #aaa;
+    font-size: 16px;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    z-index: 9999;
+}
+
+.successTip {
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    line-height: 48px;
+    width: 560px;
+    text-align: center;
+    position: fixed;
+    margin: 0 auto;
+    bottom: 20px;
+    left: 200px;
+    border-radius: 8px;
+}
+.headerContainer {
+    background: #fff;
+    padding: 5px;
+}
+.datePick {
+    float: left;
+    width: 244px;
+}
+.searchBar {
+    position: relative;
+    loat: right;
+}
+
+.listType {
+    display: list-item;
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 25px;
+}
+
+.HeaderTop {
+    display: flex;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    height: 80px;
+    /* border: 1px solid #e8e8e8; */
+    border-radius: 5px;
+}
+.title {
+    color: #8c8c8c;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-left-color: #8c8c8c;
+    padding-left: 12px;
+}
+.cardRow {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+.noDataBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 320px;
+    flex-direction: column;
+}
+.noDataBox p {
+    margin-top: 20px;
+}

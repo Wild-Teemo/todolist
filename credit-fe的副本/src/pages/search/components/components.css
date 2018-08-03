@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.searchBarL {
+    position: relative;
+    bottom: 98px;
+    height: 50px;
+    width: 700px;
+    background: #ffff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.53),
+        inset 0 1px 0 0 rgba(0, 0, 0, 0.1), inset 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2px;
+}
+.searchBarS {
+    height: 40px;
+    width: 276px;
+    background: #ffff;
+    box-shadow: 0 1px 0 0 #ffffff, inset 0 1px 0 0 rgba(0, 0, 0, 0.1),
+        inset 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2px;
+}
+.searchBtnL {
+    float: right;
+    height: 40px;
+    outline: 0;
+    width: 40px;
+    background: url("../../../assets/images/searchBtn.png");
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.36), inset 0 1px 0 0 #ffffff,
+        inset 0 0 0 0 rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 2px;
+    margin-right: 4px;
+}
+.searchBtnS {
+    float: right;
+    height: 34px;
+    outline: 0;
+    width: 34px;
+    background: url("../../../assets/images/searchBtn.png");
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.36), inset 0 1px 0 0 #ffffff,
+        inset 0 0 0 0 rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 2px;
+    margin-right: 3px;
+}
+.searchBtnL img {
+    display: table-cell;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+}
+.searchBtnS img {
+    display: table-cell;
+    margin: 0 auto;
+    width: 16px;
+    height: 16px;
+}
+.searchInputS {
+    float: left;
+    outline: 0;
+    height: 36px;
+    width: 240px;
+    padding: 12px 0 12px 16px;
+    font-size: 14px;
+    border: 0;
+}
+.searchInputL {
+    float: left;
+    outline: 0;
+    height: 46px;
+    width: 638px;
+    padding: 12px 0 12px 16px;
+    font-size: 14px;
+    border: 0;
+}
+.centerBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+}
+.tableName {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    padding-left: 24px;
+    line-height: 40px;
+    background-image: linear-gradient(-180deg, #fbfbfb 0%, #f5f5f5 100%);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+    margin-top: 24px;
+}
+::-webkit-input-placeholder {
+    color: #999999;
+}
+.searchBarCon {
+    width: 100%;
+    height: 80px;
+    padding: 19px 0px 15px 21px;
+    background-image: linear-gradient(-180deg, #fbfbfb 0%, #f5f5f5 100%);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 4px 4px 0 0;
+}
+.resultContainer {
+    position: relative;
+    height: 100%;
+    color: #999999;
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+.resultContainer2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 730px;
+    color: #999999;
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+.noMargin {
+    margin: 0 !important;
+}
+.hint {
+    display: block;
+    margin: 350px;
+    font-size: 1.25rem;
+}
+.resultItem {
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+}
+.resultItemOdd {
+    width: 100%;
+    height: 80px;
+    background: #f7f7f7;
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+}
+.eventDetails {
+    margin-top: 22px;
+    margin-bottom: 26px;
+}
+
+.paginationMargin {
+    margin-top: 8px;
+}
+
+.floatRight {
+    float: right;
+}
+.avatar {
+    width: 500px;
+    height: 48px;
+    padding: 0;
+}
+.avatar li {
+    list-style-type: none;
+    float: left;
+}
+.avatar :global(.ant-avatar-lg) {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+.avatar li ul {
+    padding-left: 1.2em;
+}
+.avatar .avatarDep {
+    line-height: 1em;
+    margin: 0.8em auto;
+}
+.avatar .avatarDep li {
+    float: none;
+}
+.name {
+    font-size: 16px;
+    color: #333333;
+}
+.smallerSize {
+    font-size: 14px;
+    color: #666666;
+}
+.smallestSize {
+    font-size: 12px;
+    color: #666666;
+}
+.centerBlankContainer {
+    padding: 0 auto;
+}
+.centerBlankBox {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 232px;
+    padding: 90px 0;
+}
+.imgBlock {
+    display: block;
+    padding-left: 23px;
+}

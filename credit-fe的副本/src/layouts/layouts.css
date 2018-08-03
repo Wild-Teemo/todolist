@@ -1,0 +1,143 @@
+.logo {
+    height: 70px;
+    width: 80px;
+    background-image: url("../assets/images/symbols-logo.svg");
+    background-size: 100% 100%;
+    border-bottom: 1px solid #202020;
+}
+.siderbar {
+    background: #383838;
+}
+
+.siderbar .navMenu {
+    height: 70px;
+    width: 80px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #383838;
+    border-right: transparent;
+}
+
+.siderbar .link {
+    background-color: #383838;
+    border-bottom: 1px solid #202020;
+    color: white;
+    font-size: 12px;
+    font-family: PingFangSC-Regular, sans-serif;
+}
+
+:global .ant-menu-inline .ant-menu-item:after {
+    border-right: transparent;
+    background: #2e2e2e;
+}
+
+:global .ant-menu-inline .ant-menu-item.ant-menu-item-selected a {
+    background: #2e2e2e;
+}
+
+.siderbar .menuImg {
+    display: block;
+    text-align: center;
+    line-height: 38px !important;
+}
+
+.position_bottom {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+:global(.ant-menu.ant-menu-dark .ant-menu-item-selected) {
+    background-color: transparent;
+}
+
+.siderbar
+    .navMenu
+    :global(.ant-menu.ant-menu-dark
+        .ant-menu-item-selected
+        > a, .ant-menu.ant-menu-dark .ant-menu-item-selected > a:hover) {
+    color: red !important;
+}
+
+:global(.ant-menu-item.ant-menu-item-selected a) {
+    color: #f18d55 !important;
+}
+
+@media screen and (min-width: 768px) {
+    .siderbar {
+        flex: 0 0 100px !important;
+        max-width: 80px !important;
+        min-width: 80px !important;
+        width: 80px !important;
+    }
+    .siderbar .navIcon {
+        height: 22px;
+        width: 22px;
+        margin-top: 12px;
+    }
+    .avatar img {
+        height: 72px;
+        width: 72px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 4px;
+    }
+    .siderbar {
+        flex: 0 0 80px !important;
+        max-width: 80px !important;
+        min-width: 80px !important;
+        width: 80px !important;
+    }
+    .siderbar .navIcon {
+        height: 16px;
+        width: 16px;
+    }
+    .avatar img {
+        height: 32px;
+        width: 32px;
+    }
+    :global(.ant-layout-header) {
+        padding: 0 30px;
+    }
+}
+
+.avatar {
+    line-height: 7em;
+    padding: 0;
+    height: 42px;
+}
+
+.avatar li {
+    list-style-type: none;
+    float: left;
+}
+.avatar li ul {
+    padding-left: 1.2em;
+}
+.avatar .avatarDep {
+    line-height: 40px;
+    margin: 1.7em auto;
+}
+.avatar .avatarDep li {
+    height: 20px !important;
+    font-size: 14px;
+    float: none;
+}
+.departName {
+    font-size: 12px !important;
+    color: #666666;
+    font-weight: lighter;
+}
+.name {
+    font-family: PingFangSC-Medium;
+    font-weight: normal;
+    color: #333333;
+    padding-right: 8px;
+}
+.department {
+    font-weight: bolder;
+}

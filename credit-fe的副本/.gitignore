@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+/src/pages/.umi
+
+.idea/
+.vscode/
+
+dist/
+docs/
+package-lock.json
+server/node_modules
+server/package-lock.json
+
+*/.DS_Store
